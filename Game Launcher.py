@@ -1,6 +1,8 @@
 import pygame
 import os
 import random
+pygame.init()
+pygame.mixer.init()
 WIDTH = 498
 HEIGHT = 278
 FPS = 30
@@ -10,12 +12,13 @@ BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
+#Звук кнопки
+pygame.mixer.music.load("minecraft_click.mp3")
 #Прямоугольники для кнопок
 rect1 = pygame.Rect((150, 60, 200, 50))
 rect2 = pygame.Rect((150, 140, 200, 50))
 # Создаем игру и окно
-pygame.init()
-pygame.mixer.init()
+
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Game Launcher")
 clock = pygame.time.Clock()
@@ -49,6 +52,7 @@ class Button():
             self.buttonSurface.fill(self.fillColors['hover'])
             if pygame.mouse.get_pressed(num_buttons=3)[0]:
                 self.buttonSurface.fill(self.fillColors['pressed'])
+                pygame.mixer.music.play(1,0.4)
                 if self.onePress:
                     self.onclickFunction()
                 elif not self.alreadyPressed:
