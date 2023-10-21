@@ -16,6 +16,10 @@ pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Tetris Game")
 clock = pygame.time.Clock()
+# Рендеринг
+screen.fill(BLACK)
+# после отрисовки всего, переворачиваем экран
+pygame.display.flip()
 # Цикл игры
 running = True
 while running:
