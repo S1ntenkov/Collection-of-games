@@ -20,6 +20,10 @@ clock = pygame.time.Clock()
 screen.fill(BLACK)
 # после отрисовки всего, переворачиваем экран
 pygame.display.flip()
+bg = pygame.image.load("bg.png")
+#INSIDE OF THE GAME LOOP
+screen.blit(bg, (0, 0))
+#REST OF ITEMS ARE BLIT'D TO SCREEN.
 # Цикл игры
 running = True
 while running:
