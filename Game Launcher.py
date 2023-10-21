@@ -1,6 +1,6 @@
 import pygame
+import os
 import random
-
 WIDTH = 498
 HEIGHT = 278
 FPS = 30
@@ -63,10 +63,9 @@ class Button():
         screen.blit(self.buttonSurface, self.buttonRect)
 #Функция определяющая действие после нажатия кнопки
 def Button1():
-    print('Snake game')
+    os.system('python SnakeGame.py')
 def Button2():
-    print('Tetris game')
-
+    os.system('python TetrisGame.py')
 Button(150, 60, 200, 50, 'Snake game', Button1)
 Button(150, 140, 200, 50, 'Tetris game', Button2)
 #Гифка
