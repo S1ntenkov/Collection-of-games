@@ -1,8 +1,8 @@
 import pygame
 import random
 
-WIDTH = 500
-HEIGHT = 700
+WIDTH = 498
+HEIGHT = 278
 FPS = 30
 # Задаем цвета
 WHITE = (255, 255, 255)
@@ -16,14 +16,15 @@ pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Game Launcher")
 clock = pygame.time.Clock()
+
+#Гифка
+background = pygame.image.load('pixel_art_background.gif').convert()
+background = pygame.transform.smoothscale(background, screen.get_size())
 # Рендеринг
-screen.fill(BLACK)
+#screen.fill(BLACK)
+screen.blit(background, (0, 0))
 # после отрисовки всего, переворачиваем экран
 pygame.display.flip()
-bg = pygame.image.load("bg.png")
-#INSIDE OF THE GAME LOOP
-screen.blit(bg, (0, 0))
-#REST OF ITEMS ARE BLIT'D TO SCREEN.
 # Цикл игры
 running = True
 while running:
