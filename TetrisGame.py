@@ -20,7 +20,7 @@ pygame.display.set_caption("Tetris Game")
 clock = pygame.time.Clock()
 #создаем сетку
 game_grid = Grid()
-block = JBlock()
+block = IBlock()
 # Рендеринг
 screen.fill(BLACK)
 # после отрисовки всего, переворачиваем экран
