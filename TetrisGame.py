@@ -1,8 +1,8 @@
 import pygame
 import random
 
-WIDTH = 500
-HEIGHT = 700
+WIDTH = 400
+HEIGHT = 800
 FPS = 30
 # Задаем цвета
 WHITE = (255, 255, 255)
