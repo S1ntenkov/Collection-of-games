@@ -1,5 +1,6 @@
 import pygame
 from grid import Grid
+from blocks import *
 import random
 
 WIDTH = 400
@@ -19,7 +20,7 @@ pygame.display.set_caption("Tetris Game")
 clock = pygame.time.Clock()
 #создаем сетку
 game_grid = Grid()
-game_grid.print_grid()
+block = LBlock()
 # Рендеринг
 screen.fill(BLACK)
 # после отрисовки всего, переворачиваем экран
@@ -36,7 +37,7 @@ while running:
             running = False
     # рисуем сетку
     game_grid.draw(screen)
-
+    block.draw(screen)
     pygame.display.update()
     clock.tick(FPS)
 pygame.quit()
