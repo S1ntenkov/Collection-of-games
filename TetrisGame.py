@@ -16,6 +16,9 @@ clock = pygame.time.Clock()
 # Цикл игры
 running = True
 game_grid = Grid()
+game_grid.grid[0][0] = 1
+game_grid.grid[3][5] = 4
+game_grid.grid[17][8] = 7
 game_grid.print_grid()
 
 while running:
@@ -27,6 +30,6 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     screen.fill(DARK_BLUE)
-    
+    game_grid.draw(screen)
 pygame.quit()
 sys.exit()
