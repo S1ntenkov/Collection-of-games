@@ -1,4 +1,5 @@
 import pygame
+from grid import Grid
 import random
 
 WIDTH = 400
@@ -16,6 +17,9 @@ pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Tetris Game")
 clock = pygame.time.Clock()
+#создаем сетку
+game_grid = Grid()
+game_grid.print_grid()
 # Рендеринг
 screen.fill(BLACK)
 # после отрисовки всего, переворачиваем экран
@@ -24,10 +28,15 @@ pygame.display.flip()
 running = True
 while running:
     # Держим цикл на правильной скорости
-    clock.tick(FPS)
+
     # Ввод процесса (события)
     for event in pygame.event.get():
         # check for closing window
         if event.type == pygame.QUIT:
             running = False
+    # рисуем сетку
+    game_grid.draw(screen)
+
+    pygame.display.update()
+    clock.tick(FPS)
 pygame.quit()
