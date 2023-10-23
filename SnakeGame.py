@@ -13,11 +13,15 @@ class SNAKE:
         self.body = [Vector2(6,10),Vector2(7,10),Vector2(8,10)]
         self.direction = Vector2(1,0)
     def draw_snake(self):
+        block_rect = pygame.Rect(self.body[0].x * cell_size, self.body[0].y * cell_size, cell_size, cell_size)
+        screen.blit(head, block_rect)
+        for i in range(1,len(self.body)-1):
+            block_rect = pygame.Rect(self.body[i].x*cell_size,self.body[i].y*cell_size,cell_size,cell_size)
+            screen.blit(snakeskin, block_rect)
+        #Хвост
+        #block_rect = pygame.Rect(self.body[-1].x * cell_size, self.body[-1].y * cell_size, cell_size, cell_size)
+        #screen.blit(head, block_rect)
 
-        for block in self.body:
-            block_rect = pygame.Rect(block.x*cell_size,block.y*cell_size,cell_size,cell_size)
-            pygame.draw.rect(screen, ("white"), block_rect)
-            #screen.blit(head, block_rect)
         #fruit_rect = pygame.Rect(self.body ,cell_size, cell_size*2)
     def move_snake(self):
         body_copy = self.body[:-1]
@@ -50,6 +54,7 @@ clock = pygame.time.Clock()
 apple= pygame.image.load('текстура-яблока.png').convert()
 #Текстура головы змеи
 head = pygame.image.load("snakehead.png").convert()
+snakeskin= pygame.image.load("snakeskin.jpg").convert()
 
 pygame.display.flip()
 
@@ -86,6 +91,7 @@ while running:
                 snake.direction=Vector2(0,-1)
             if event.key == pygame.K_DOWN and snake.direction.y!=-1:
                 snake.direction=Vector2(0,+1)
+                #screen.blit(head, block_rect)
             if event.key == pygame.K_RIGHT and snake.direction.x!=-1:
                 snake.direction=Vector2(+1,0)
             if event.key == pygame.K_LEFT and snake.direction.x!=1:
