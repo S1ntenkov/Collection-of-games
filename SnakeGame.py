@@ -20,8 +20,8 @@ class SNAKE:
             screen.blit(snakeskin, block_rect)
 
         #Хвост
-        #block_rect = pygame.Rect(self.body[-1].x * cell_size, self.body[-1].y * cell_size, cell_size, cell_size)
-        #screen.blit(head, block_rect)
+        block_rect = pygame.Rect(self.body[-1].x * cell_size, self.body[-1].y * cell_size, cell_size, cell_size)
+        screen.blit(tail, block_rect)
 
         #fruit_rect = pygame.Rect(self.body ,cell_size, cell_size*2)
     def move_snake(self):
@@ -55,6 +55,7 @@ clock = pygame.time.Clock()
 apple= pygame.image.load('текстура-яблока.png').convert()
 #Текстура головы змеи
 head = pygame.image.load("snakehead.png").convert_alpha()
+tail = pygame.image.load("snaketail.png").convert_alpha()
 snakeskin= pygame.image.load("snakeskin.png").convert_alpha() #.convert_alpha() для прозрачности
 pygame.transform.rotate(snakeskin, 180)
 
@@ -96,12 +97,14 @@ while running:
                 if default_angle!=0:
                     snakeskin = pygame.transform.rotate(snakeskin, 90)
                     head = pygame.transform.rotate(head,90)
+                    tail = pygame.transform.rotate(tail, 90)
                     default_angle=0
             if event.key == pygame.K_DOWN and snake.direction.y!=-1:
                 snake.direction=Vector2(0,+1)
                 if default_angle != 0:
                     snakeskin = pygame.transform.rotate(snakeskin, 90)
                     head = pygame.transform.rotate(head, 90)
+                    tail = pygame.transform.rotate(tail, 90)
                     default_angle=0
                 #screen.blit(head, block_rect)
             if event.key == pygame.K_RIGHT and snake.direction.x!=-1:
@@ -109,12 +112,14 @@ while running:
                 if default_angle != 90:
                     snakeskin = pygame.transform.rotate(snakeskin, 90)
                     head = pygame.transform.rotate(head, 90)
+                    tail = pygame.transform.rotate(tail, 90)
                     default_angle=90
             if event.key == pygame.K_LEFT and snake.direction.x!=1:
                 snake.direction=Vector2(-1,0)
                 if default_angle != 90:
                     snakeskin = pygame.transform.rotate(snakeskin, 90)
                     head = pygame.transform.rotate(head, 90)
+                    tail = pygame.transform.rotate(tail, 90)
                     default_angle=90
 
         if snake.body[0] == fruit.pos/cell_size:
@@ -148,6 +153,9 @@ while running:
                     high_score = high_score.replace(str(high_score), str(player_score))
                     high_score_file = open("high_score.txt", "wt")
                     high_score_file.write(high_score)
+
+
+
 
     #screen.fill((255, 215, 70))
     screen.fill((0,0,0))
