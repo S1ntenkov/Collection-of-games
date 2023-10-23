@@ -25,6 +25,9 @@ class SNAKE:
         self.body = body_copy[:]
 
 
+
+
+
 class FRUIT:
     def __init__(self):
         self.x= random.randint(1,cell_number-1)
@@ -57,14 +60,22 @@ snake = SNAKE()
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE,150)
 
-end=1
+
 player_score = "0"
+high_score_file = open("high_score.txt", "rt")
+high_score = high_score_file.read()
+
+print(high_score,'high score')
 
 font = pygame.font.SysFont('Unispace', 80)
+font2 = pygame.font.SysFont('Unispace', 40)
 img = font.render(player_score, True, "white")
+img2= font2.render("high score: "+high_score, True, "white")
+
 
 while running:
     for event in pygame.event.get():
+
         # check for closing window
         if event.type == pygame.QUIT:
             running = False
@@ -85,28 +96,38 @@ while running:
             fruit.pos=Vector2(random.randint(1,cell_number-1)*cell_size,random.randint(1,cell_number-1)*cell_size)
             snake.body.append(Vector2(fruit.pos/cell_size))
             print("ate an apple")
-            end+=1
+
             player_score=str(int(player_score)+1)
             img = font.render(player_score, True, "white")
 
 
         if snake.body[0][0]<1 or snake.body[0][0]>19 or snake.body[0][1]<1 or snake.body[0][1]>20:
             running=False
+            print("Watch your step!")
+
+            if player_score > high_score:
+
+                high_score = high_score.replace(str(high_score), str(player_score))
+                high_score_file = open("high_score.txt", "wt")
+                high_score_file.write(high_score)
+
+
 
         for body in snake.body[3:]:
 
             if snake.body[0]==body:
                 print(body, snake.body[0])
                 running=False
-                print("End!")
-
-
-
-
+                print("Ate yourself!")
+                if player_score > high_score:
+                    high_score = high_score.replace(str(high_score), str(player_score))
+                    high_score_file = open("high_score.txt", "wt")
+                    high_score_file.write(high_score)
 
     #screen.fill((255, 215, 70))
     screen.fill((0,0,0))
     screen.blit(img, (30, 430))
+    screen.blit(img2, (200, 450))
     fruit.draw_fruit()
     snake.draw_snake()
     pygame.draw.rect(screen, ((255, 255, 255)), rect1, 2)
