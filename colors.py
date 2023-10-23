@@ -1,14 +1,15 @@
 class Colors:
-    blue = (0, 0, 205)
-    red = (255, 0, 0)
-    lime = (0, 255, 0)
-    orange = (255, 165, 0)
-    pink = (255, 0, 255)
-    violet = (148, 0, 211)
-    aqua = (0, 255, 255)
-    aquamarine = (127, 255, 212)
-
+    dark_grey = (26, 31, 60)
+    green = (47, 230, 23)
+    red = (232, 18, 18)
+    orange = (226, 116, 17)
+    yellow = (237, 234, 4)
+    purple = (166, 0, 247)
+    cyan = (21, 204, 209)
+    blue = (13, 64, 216)
+    white = (255, 255, 255)
+    dark_blue = (44, 44, 127)
+    light_blue = (59, 85, 162)
     @classmethod
-    def get_colors(cls):
-        return [cls.blue, cls.red, cls.lime, cls.orange, cls.pink, cls.violet, cls.aqua, cls.aquamarine]
-        
+    def get_cell_colors(cls):
+            return [cls.dark_grey, cls.green, cls.red, cls.orange, cls.yellow, cls.purple, cls.cyan, cls.blue]
