@@ -1,11 +1,9 @@
 import pygame
-from grid import Grid
-from blocks import *
-import random
+from game import Game
 
 WIDTH = 400
 HEIGHT = 800
-FPS = 30
+FPS = 60
 # Задаем цвета
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -18,15 +16,12 @@ pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Tetris Game")
 clock = pygame.time.Clock()
-#создаем сетку
-game_grid = Grid()
-block = TBlock()
-block.move(3,3)
 # Рендеринг
 screen.fill(BLACK)
 # после отрисовки всего, переворачиваем экран
 pygame.display.flip()
 # Цикл игры
+game = Game()
 running = True
 while running:
     # Держим цикл на правильной скорости
@@ -36,9 +31,11 @@ while running:
         # check for closing window
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.KEYDOWN:
+            if event.type == pygame.K_LEFT:
     # рисуем сетку
-    game_grid.draw(screen)
-    block.draw(screen)
+    screen.fill(BLACK)
+    game.draw(screen)
     pygame.display.update()
     clock.tick(FPS)
 pygame.quit()
