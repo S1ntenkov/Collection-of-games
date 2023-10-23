@@ -54,7 +54,7 @@ clock = pygame.time.Clock()
 #Текстура яблока
 apple= pygame.image.load('текстура-яблока.png').convert()
 #Текстура головы змеи
-head = pygame.image.load("snakehead.png").convert()
+head = pygame.image.load("snakehead.png").convert_alpha()
 snakeskin= pygame.image.load("snakeskin.png").convert_alpha() #.convert_alpha() для прозрачности
 pygame.transform.rotate(snakeskin, 180)
 
@@ -81,6 +81,7 @@ img = font.render(player_score, True, "white")
 img2= font2.render("high score: "+high_score, True, "white")
 
 default_angle = 0
+
 while running:
     for event in pygame.event.get():
 
@@ -94,22 +95,26 @@ while running:
                 snake.direction=Vector2(0,-1)
                 if default_angle!=0:
                     snakeskin = pygame.transform.rotate(snakeskin, 90)
+                    head = pygame.transform.rotate(head,90)
                     default_angle=0
             if event.key == pygame.K_DOWN and snake.direction.y!=-1:
                 snake.direction=Vector2(0,+1)
                 if default_angle != 0:
                     snakeskin = pygame.transform.rotate(snakeskin, 90)
+                    head = pygame.transform.rotate(head, 90)
                     default_angle=0
                 #screen.blit(head, block_rect)
             if event.key == pygame.K_RIGHT and snake.direction.x!=-1:
                 snake.direction=Vector2(+1,0)
                 if default_angle != 90:
                     snakeskin = pygame.transform.rotate(snakeskin, 90)
+                    head = pygame.transform.rotate(head, 90)
                     default_angle=90
             if event.key == pygame.K_LEFT and snake.direction.x!=1:
                 snake.direction=Vector2(-1,0)
                 if default_angle != 90:
                     snakeskin = pygame.transform.rotate(snakeskin, 90)
+                    head = pygame.transform.rotate(head, 90)
                     default_angle=90
 
         if snake.body[0] == fruit.pos/cell_size:
