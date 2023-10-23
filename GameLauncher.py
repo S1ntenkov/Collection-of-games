@@ -67,9 +67,9 @@ class Button():
         screen.blit(self.buttonSurface, self.buttonRect)
 #Функция определяющая действие после нажатия кнопки
 def Button1():
-    os.system('python SnakeGame.py')
+    os.system('py SnakeGame.py')
 def Button2():
-    os.system('python TetrisGame.py')
+    os.system('py TetrisGame.py')
 Button(150, 60, 200, 50, 'Snake game', Button1)
 Button(150, 140, 200, 50, 'Tetris game', Button2)
 #Гифка
