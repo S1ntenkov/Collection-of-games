@@ -17,6 +17,7 @@ class SNAKE:
         for block in self.body:
             block_rect = pygame.Rect(block.x*cell_size,block.y*cell_size,cell_size,cell_size)
             pygame.draw.rect(screen, ("white"), block_rect)
+            #screen.blit(head, block_rect)
         #fruit_rect = pygame.Rect(self.body ,cell_size, cell_size*2)
     def move_snake(self):
         body_copy = self.body[:-1]
@@ -31,7 +32,6 @@ class FRUIT:
         self.pos = (Vector2(self.x*cell_size,self.y*cell_size))
     def draw_fruit(self):
         fruit_rect = pygame.Rect(self.pos.x,self.pos.y,cell_size,cell_size)
-        #pygame.draw.rect(screen,apple,fruit_rect)
         screen.blit(apple, fruit_rect)
 
 #cell_size = 40
@@ -45,6 +45,8 @@ pygame.display.set_caption("Snake")
 clock = pygame.time.Clock()
 #Текстура яблока
 apple= pygame.image.load('текстура-яблока.png').convert()
+#Текстура головы змеи
+head = pygame.image.load("snakehead.png").convert()
 
 pygame.display.flip()
 

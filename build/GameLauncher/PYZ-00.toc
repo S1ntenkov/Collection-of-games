@@ -1,4 +1,5 @@
-('C:\\Программирование проекты\\Tetris game\\build\\GameLauncher\\PYZ-00.pyz',
+('C:\\Программирование проекты\\Tetris '
+ 'game\\Collection-of-games\\build\\GameLauncher\\PYZ-00.pyz',
  [('__future__',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1776.0_x64__qbz5n2kfra8p0\\Lib\\__future__.py',
