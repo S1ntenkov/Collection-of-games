@@ -21,6 +21,7 @@ clock = pygame.time.Clock()
 #создаем сетку
 game_grid = Grid()
 block = TBlock()
+block.move(3,3)
 # Рендеринг
 screen.fill(BLACK)
 # после отрисовки всего, переворачиваем экран
