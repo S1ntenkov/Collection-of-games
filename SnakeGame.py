@@ -6,6 +6,8 @@ from pygame.math import Vector2
 
 pygame.init()
 #pygame.mixer.init()
+#Звук поедания яблока
+pygame.mixer.music.load("ukus-yabloka-korotkiy.mp3")
 rect1 = pygame.Rect((20,20, 380, 400))
 
 class SNAKE:
@@ -152,6 +154,7 @@ while running:
         if snake.body[0] == fruit.pos/cell_size:
             fruit.pos=Vector2(random.randint(1,cell_number-1)*cell_size,random.randint(1,cell_number-1)*cell_size)
             snake.body.append(Vector2(fruit.pos/cell_size))
+            pygame.mixer.music.play(1)
             print("ate an apple")
 
             player_score=str(int(player_score)+1)
