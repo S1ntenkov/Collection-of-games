@@ -124,7 +124,7 @@ player_score = "0"
 high_score_file = open("high_score.txt", "rt")
 high_score = high_score_file.read()
 
-print(high_score,'high score')
+print(type(high_score),'high score')
 
 font = pygame.font.SysFont('Unispace', 80)
 font2 = pygame.font.SysFont('Unispace', 40)
@@ -165,7 +165,7 @@ while running:
             running=False
             print("Watch your step!")
 
-            if player_score > high_score:
+            if int(player_score) > int(high_score):
 
                 high_score = high_score.replace(str(high_score), str(player_score))
                 high_score_file = open("high_score.txt", "wt")
@@ -179,7 +179,7 @@ while running:
                 print(body, snake.body[0])
                 running=False
                 print("Ate yourself!")
-                if player_score > high_score:
+                if int(player_score) > int(high_score):
                     high_score = high_score.replace(str(high_score), str(player_score))
                     high_score_file = open("high_score.txt", "wt")
                     high_score_file.write(high_score)
